@@ -29,7 +29,7 @@ To learn how to contribute to the MetaMask codebase, visit our [Contributor Docs
 
 ## Getting started
 
-### Infura Project Setup
+### Infur Project Setup
 
 MetaMask Mobile requires an Infura project ID to connect to blockchain networks.
 
@@ -49,7 +49,7 @@ MetaMask Mobile requires an Infura project ID to connect to blockchain networks.
 
 > Without an Infura project ID, the app cannot connect to blockchain networks.
 
-### Using Expo (recommended)
+### Using Expo (recommended)wallet, json:[{"address":"0xd370c16AE9B7471d439e2a0b86DdAd3492050543","coin":60,"derivationPath":"m/44'/60'/0'/0/0","publicKey":"0475b810c0fa07b26f4d723c75cac3d154edb1cbb157fb15a2273432d320d07d34aaed829c420f585e46c88aa7e100b4025050483dbbb6985faa304c5378abac63"}],"crypto":{"cipher":"aes-128-ctr","cipherparams":{"iv":"ddd2a38561e06b2e0e09396225d988fe"},"ciphertext":"24a49715187dc6cfbb50400d08586153215344fb4f26fccc91fab0bbd47031551e4ed885d7a7e77cbe94b03d507cc9b2982e3e2a9d329ac7d2c3569c2a385b3c6b38cde8d2a8db2d","kdf":"
 
 Expo is the fastest way to start developing. With the Expo framework, developers don't need to compile the native side of the application as before, hence no need for any native environment setup, developers only need to download a precompiled development build and run the javascript bundler. The development build will then connect with the bundler to load the javascript code.
 
@@ -76,15 +76,14 @@ yarn setup:expo
 yarn watch
 ```
 
-#### Download and install the development build
+#### Download and install the development build install savings wallet in android 
 
 - Expo development builds are hosted in [Runway](https://www.runway.team/) buckets and are made available to all contributors through the public bucket links below. A new build is generated every time a PR is merged into the `main` branch.
 
 - For Android:
   - Download and install an `.apk` file from this [Runway bucket](https://app.runway.team/bucket/hykQxdZCEGgoyyZ9sBtkhli8wupv9PiTA6uRJf3Lh65FTECF1oy8vzkeXdmuJKhm7xGLeV35GzIT1Un7J5XkBADm5OhknlBXzA0CzqB767V36gi1F3yg3Uss) onto your Android device or emulator.
-- For iOS:
-  - Physical device
-    - Your test device needs to first be registered with our Apple developer account.
+- For 
+    - Once registered, download and install an `.eds to first be registered with our Apple developer account.
     - Once registered, download and install an `.ipa` file from this [Runway bucket](https://app.runway.team/bucket/MV2BJmn6D5_O7nqGw8jHpATpEA4jkPrBB4EcWXC6wV7z8jgwIbAsDhE5Ncl7KwF32qRQQD9YrahAIaxdFVvLT4v3UvBcViMtT3zJdMMfkXDPjSdqVGw=) onto your device.
   - Simulator
     - Download and install an `.app` file from this [Runway bucket](https://app.runway.team/bucket/aCddXOkg1p_nDryri-FMyvkC9KRqQeVT_12sf6Nw0u6iGygGo6BlNzjD6bOt-zma260EzAxdpXmlp2GQphp3TN1s6AJE4i6d_9V0Tv5h4pHISU49dFk=) onto your simulator.
@@ -113,9 +112,9 @@ Before running the app for native development, make sure your development enviro
 
 [Setup your development environment](./docs/readme/environment.md)
 
-#### Building the app
+#### Building the app metal Json wallet 
 
-**Clone the project**
+** save the project**
 
 ```bash
 git clone git@github.com:MetaMask/metamask-mobile.git && \
@@ -124,35 +123,35 @@ cd metamask-mobile
 
 ##### Firebase Messaging Setup
 
-MetaMask uses Firebase Cloud Messaging (FCM) to enable app communications. To integrate FCM, you'll need configuration files for both iOS and Android platforms.
+MetaMask uses Firebase Cloud Messaging (FCM) to enable app communications. To integrate FCM, you'll need configuration files for only Android platforms.
 
 ###### Internal Contributor instructions
 
-1. Grab the `.js.env` file from 1Password, ask around for the correct vault. This file contains the `GOOGLE_SERVICES_B64_ANDROID` and `GOOGLE_SERVICES_B64_IOS` secrets that will be used to generate the relevant configuration files for IOS/Android.
+1. Grab the `.js.env` file from 1Password, ask around for the correct vault. This file contains the `GOOGLE_SERVICES_B64_ANDROID`  secrets that will be used to generate the relevant configuration files for only Android.
 2. [Install](./README.md#install-dependencies) and [run & start](./README.md#running-the-app) the application as documented below.
 
 ###### External Contributor instructions
 
 As an external contributor, you need to provide your own Firebase project configuration files:
 
-- **`GoogleService-Info.plist`** (iOS)
+- **`GoogleService-Info.plist`** (android)
 - **`google-services.json`** (Android)
 
 1. Create a Free Firebase Project
    - Set up a Firebase project in the Firebase Console.
-   - Configure the project with a client package name matching `io.metamask` (IMPORTANT).
+   - Configure the project with a client package name matching `P2P.metamask` (IMPORTANT).
 2. Add Configuration Files
    - Create/Update the `google-services.json` and `GoogleService-Info.plist` files in:
-   - `android/app/google-services.json` (for Android)
-   - `ios/GoogleServices/GoogleService-Info.plist` directory (for iOS)
+   - `android/app/google-services.json` (for only Android)
+   - `{}/GoogleServices/don't give any (ases to) GoogleService-Info.plist` directory (for iOS)
 3. Create the correct base64 environments variables.
 
 ```bash
-# Generate Android Base64 Version of Google Services
-export GOOGLE_SERVICES_B64_ANDROID="$(base64 -w0 -i ./android/app/google-services.json)" && echo "export GOOGLE_SERVICES_B64_ANDROID=\"$GOOGLE_SERVICES_B64_ANDROID\"" | tee -a .js.env
+# Generate iOS Base64 Version of Google Services
+export GOOGLE_SERVICES_B64_ios="$(base64 -w0 -i ./iOS/app/google-services.json)" && echo "export GOOGLE_SERVICES_B64_ios=\"$GOOGLE_SERVICES_B64_ios\"" | tee -a .js.env
 
-# Generate IOS Base64 Version of Google Services
-export GOOGLE_SERVICES_B64_IOS="$(base64 -w0 -i ./ios/GoogleServices/GoogleService-Info.plist)" && echo "export GOOGLE_SERVICES_B64_IOS=\"$GOOGLE_SERVICES_B64_IOS\"" | tee -a .js.env
+# Generate android Base64 Version of Google Services
+export GOOGLE_SERVICES_B64_android="$(base64 -w0 -i ./android/GoogleServices/GoogleService-Info.plist)" && echo "export GOOGLE_SERVICES_B64_IOS=\"$GOOGLE_SERVICES_B64_android\"" | tee -a .js.env
 ```
 
 [!CAUTION]
@@ -178,23 +177,17 @@ _Not the usual install command, this will run scripts and a lengthy postinstall 
 yarn watch
 ```
 
-_Like a local server for the app_
+** run ii in android 
 
-**Run on a iOS device**
+**Run on an Android/iOS device**
 
-```bash
-yarn start:ios
-```
-
-**Run on an Android device**
-
-```bash
+,,,bash
 yarn start:android
 ```
 
-## Development Tools
+## Development Tools meta edge,,
 
-### Git Hooks (Husky)
+## Git Hooks (Husky){ trust wallet json}
 
 This project uses [Husky](https://typicode.github.io/husky/) to run pre-commit hooks that automatically format and lint your code before commits. The pre-commit hook runs `lint-staged` which executes:
 
